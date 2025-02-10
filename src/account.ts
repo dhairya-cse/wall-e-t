@@ -1,4 +1,4 @@
-import 'server-only';
+import 'server-only'
 import { adjectives, animals, uniqueNamesGenerator } from 'unique-names-generator';
 
 type Account = {
@@ -6,6 +6,7 @@ type Account = {
     balance: number;
     name: string;
     transactions: Transaction[];
+    chatHistory?: { role: "user" | "bot", message: string }[];
 }
 
 type Transaction = {
@@ -16,13 +17,21 @@ type Transaction = {
     description: string;
 }
 
-export const accounts = createAccounts(10);
 
-function createAccounts(n: number): Account[] {
-    const accounts = [];
-    for (let i = 0; i < n; i++) {
+let accounts:Account[];
+
+export async function getAccounts(): Promise<Account[]> {
+
+    if(accounts)
+    {
+        return accounts;    
+    }
+
+    accounts = [];
+    for (let i = 0; i < 10; i++) {
         accounts.push(createAccount(i));
     }
+
     return accounts;
 }
 
@@ -56,4 +65,7 @@ export function generateRandomAccountName(): string {
         length: 2,
         style: "capital",
     });
+}
+export async function getAccountById(account_id: number | string) {
+    return (await getAccounts())[Number(account_id)];
 }

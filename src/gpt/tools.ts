@@ -1,6 +1,8 @@
-import { tool } from "@langchain/core/tools";
+import 'server-only'
+import { DynamicStructuredTool, tool } from "@langchain/core/tools";
 import { depositSchema, withdrawSchema, transactionsSchema, transferSchema } from "./schema";
 import { depositAmount, withdrawAmount, transferAmount, getTransactions } from "./actions";
+import { ToolCall } from "@langchain/core/messages/tool";
 
 export const depositTool = tool(
     depositAmount,
@@ -37,3 +39,18 @@ export const transactionsTool = tool(
         schema: transactionsSchema,
     }
 );
+
+export const tools = [depositTool, withdrawalTool, transferTool, transactionsTool];
+
+export const toolsMap: Record<string, DynamicStructuredTool<any>> = Object.freeze(
+    tools.reduce((map, _tool) => {
+        if (_tool?.name) {
+            map[_tool.name] = _tool;
+        }
+        return map;
+    }, {} as Record<string, DynamicStructuredTool<any>>)
+);
+
+export async function callTool(tool_call: ToolCall) {
+    return await toolsMap[tool_call.name].invoke(tool_call.args);
+}

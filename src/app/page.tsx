@@ -1,5 +1,7 @@
 import { get_accounts } from "./server-functions";
 
+export const dynamic = 'force-dynamic'
+
 export default async function Home() {
   const accounts = await get_accounts();
   return <>
@@ -16,9 +18,9 @@ type AccountComponentsProps = {
   balance: number;
 }
 
-export function AccountComponent({ id, name, balance }: AccountComponentsProps) {
-return <a key={id} href={`/${id}`}>
-  <b>{name}</b>
-  <p>Balance: {balance}</p>
-</a>
+function AccountComponent({ id, name, balance }: AccountComponentsProps) {
+  return <a key={id} href={`/${id}/login`}>
+    <b>{name}</b>
+    <p>Balance: {balance}</p>
+  </a>
 }

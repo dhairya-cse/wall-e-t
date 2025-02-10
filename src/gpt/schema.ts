@@ -14,9 +14,10 @@ export const transferSchema = z.object({
 });
 
 export const transactionsSchema = z.object({
-    fromDate: z.string().describe("The beginning date of the transactions to fetch."),
-    toDate: z.string().describe("The end date of the transaction to fetch."),
-    size: z.number().describe("The number of transactions to fetch."),
+    fromDate: z.string().optional().describe("The beginning date of the transactions to fetch."),
+    toDate: z.string().optional().describe("The end date of the transaction to fetch."),
+    size: z.number().optional().describe("The number of transactions to fetch."),
+    order: z.enum(['asc','desc']).optional().describe("Describes the order in which the results are returned")
 });
 
 export type WithdrawArgs = z.infer<typeof withdrawSchema>;
