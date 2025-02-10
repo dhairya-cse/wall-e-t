@@ -21,6 +21,6 @@ type AccountComponentsProps = {
 function AccountComponent({ id, name, balance }: AccountComponentsProps) {
   return <a key={id} href={`/${id}/login`}>
     <b>{name}</b>
-    <p>Balance: {balance}</p>
+    <p>Balance: £{balance}</p>
   </a>
 }

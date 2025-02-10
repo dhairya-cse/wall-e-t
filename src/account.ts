@@ -6,7 +6,7 @@ type Account = {
     balance: number;
     name: string;
     transactions: Transaction[];
-    chatHistory?: { role: "user" | "bot", message: string }[];
+    chatHistory: { role: "user" | "bot", message: string }[];
 }
 
 type Transaction = {
@@ -42,7 +42,8 @@ function createAccount(i: number): Account {
         id: i,
         balance: balance,
         name: generateRandomAccountName(),
-        transactions: createInitialTransaction(i)
+        transactions: createInitialTransaction(i),
+        chatHistory:[]
     }
 }
 

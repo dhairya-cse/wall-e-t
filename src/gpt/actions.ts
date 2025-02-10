@@ -6,7 +6,7 @@ import { getAccountById } from '@/account';
 export async function depositAmount({ amount }: DepositArgs) {
     const account = await getLoggedInAccount();
     account.balance += amount;
-    return "Deposited " + amount;
+    return `Deposited £${amount}`;
 }
 
 export async function withdrawAmount({ amount }: WithdrawArgs) {
@@ -15,7 +15,7 @@ export async function withdrawAmount({ amount }: WithdrawArgs) {
         return `Your account balance:${account.balance} is not sufficient for withdrawing ${amount}`;
     }
     account.balance -= amount;
-    return "Withdrew " + amount;
+    return `Withdrew £${amount}`;
 }
 
 export async function transferAmount({ toAccount, amount }: TransferArgs) {
@@ -32,7 +32,7 @@ export async function transferAmount({ toAccount, amount }: TransferArgs) {
     // This is done in a transaction.
     account.balance -= amount;
     destAccount.balance += amount;
-    return `Transferred ${amount} to ${toAccount}`;
+    return `Transferred £${amount} to ${destAccount.name}`;
 
 }
 

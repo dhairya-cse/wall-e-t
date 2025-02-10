@@ -1,36 +1,28 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Wall-e-t
 
-## Getting Started
+Wall-e-t is a proof-of-concept (PoC) exploring the use of chat-based banking interfaces powered by Large Language Models (LLMs).
 
-First, run the development server:
+## Overview
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+With advancements in AI, conversational agents are becoming an integral part of everyday life and will continue to evolve. In banking, such interfaces can enhance user experience by allowing users to express their intentions in natural language while maintaining security, privacy, and accuracy.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Wall-e-t maps user messages to predefined banking actions. For sensitive actions, it keeps a human in the loop by asking for confirmation (e.g., OTP verification) and ensures AI responses are controlled by using templated messages.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Tasks
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- [x] Map user messages to predefined actions.
+- [ ] Implement human-in-the-loop confirmation for sensitive operations (withdrawals, transfers).
+- [ ] Handle missing information by prompting users to provide necessary details.
 
-## Learn More
+## Future Possibilities
 
-To learn more about Next.js, take a look at the following resources:
+Since this is an exploratory project, the focus is on a minimal proof-of-concept. However, future improvements could include:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- **Better UI and personalization** – Improve response rendering and tailor interactions based on user context.
+- **Form handling in chat** – Allow the chat interface to send forms and process user inputs seamlessly.
+- **Chaining multiple actions** – Enable users to request multiple operations in a single message, e.g., _"What’s my current balance and what will it be in 3 years?"_
+- **Multi-modal interactions** – Support voice input and potentially images/videos, along with AI-generated voice responses.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+---
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+*This README was refined using AI, reinforcing the need for a seamless conversational banking experience.*

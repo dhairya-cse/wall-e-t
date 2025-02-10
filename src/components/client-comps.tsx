@@ -12,16 +12,15 @@ export function ChatBox({ init_chats, init_balance }: { init_balance: number, in
   }
 
   const handleSend = async () => {
-    setChats([...chats, { role: "user", message }]);
     const response = await chat(message);
     //TODO: error handling and handling different types of responses
-    setChats([...chats, { role: "bot", message: response }]);
+    setChats([...chats, { role: "user", message }, { role: "bot", message: response }]);
     setBalance(await getBalance());
     setMessage('');
   }
 
   return <div>
-    <div>Balance: {balance}</div>
+    <div>Balance: £{balance}</div>
     <div>
       {chats.map(({ role, message }, index) => (
         <div key={index}>
